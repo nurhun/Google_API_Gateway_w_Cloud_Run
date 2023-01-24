@@ -30,5 +30,10 @@ variable "services" {
 
     # Cloud Run service
     "run.googleapis.com",
+
+    # API Gateway
+    "apigateway.googleapis.com",
+    "servicemanagement.googleapis.com",
+    "servicecontrol.googleapis.com"
   ]
 }

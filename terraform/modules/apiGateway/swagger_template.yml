@@ -1,0 +1,480 @@
+swagger: '2.0'
+info:
+  title: Movies API
+  description: Movies API description
+  # contact:
+  #   email: contact@snippets.local
+  version: "0.1.0"
+host: moviesapi-XXXXXXXXX.apigateway.XXXXXXXXX.cloud.goog
+x-google-endpoints:
+- name: moviesapi-XXXXXXXXX.apigateway.XXXXXXXXX.cloud.goog
+  allowCors: True
+schemes:
+  - https
+basePath: /api
+consumes:
+  - application/json
+produces:
+  - application/json
+security:
+  # - api_key_query: []
+  - api_key_header: []
+paths:
+  /token:
+    post:
+      x-google-backend:
+        address: https://back-XXXXXXXXX.run.app/api/token
+        disable_auth: true
+      operationId: token_create
+      description: |-
+        Takes a set of user credentials and returns an access and refresh JSON web
+        token pair to prove the authentication of those credentials.
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/TokenObtainPair'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/TokenObtainPair'
+      tags:
+        - token
+    parameters: []
+  /token/refresh:
+    post:
+      x-google-backend:
+        address: https://back-XXXXXXXXX.run.app/api/token/refresh
+        disable_auth: true
+      operationId: token_refresh_create
+      description: |-
+        Takes a refresh type JSON web token and returns an access type JSON web
+        token if the refresh token is valid.
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/TokenRefresh'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/TokenRefresh'
+      tags:
+        - token
+    parameters: []
+  /v1/movie:
+    get:
+      x-google-backend:
+        address: https://back-XXXXXXXXX.run.app/api/v1/movie
+        disable_auth: true
+      operationId: movie_list
+      description: A simple ModelViewSet.
+      parameters: []
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Movie"
+      tags:
+        - movie
+    post:
+      x-google-backend:
+        address: https://back-XXXXXXXXX.run.app/api/v1/movie
+        disable_auth: true
+      operationId: movie_create
+      description: A simple ModelViewSet.
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Movie'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/Movie'
+      tags:
+        - movie
+    parameters: []
+  # /movie/{id}/:
+  #   get:
+  #     operationId: movie_read
+  #     description: A simple ModelViewSet.
+  #     parameters: []
+  #     responses:
+  #       '200':
+  #         description: ''
+  #         schema:
+  #           $ref: '#/definitions/Movie'
+  #     tags:
+  #       - movie
+  #   put:
+  #     operationId: movie_update
+  #     description: A simple ModelViewSet.
+  #     parameters:
+  #       - name: data
+  #         in: body
+  #         required: true
+  #         schema:
+  #           $ref: '#/definitions/Movie'
+  #     responses:
+  #       '200':
+  #         description: ''
+  #         schema:
+  #           $ref: '#/definitions/Movie'
+  #     tags:
+  #       - movie
+  #   patch:
+  #     operationId: movie_partial_update
+  #     description: A simple ModelViewSet.
+  #     parameters:
+  #       - name: data
+  #         in: body
+  #         required: true
+  #         schema:
+  #           $ref: '#/definitions/Movie'
+  #     responses:
+  #       '200':
+  #         description: ''
+  #         schema:
+  #           $ref: '#/definitions/Movie'
+  #     tags:
+  #       - movie
+  #   delete:
+  #     operationId: movie_delete
+  #     description: A simple ModelViewSet.
+  #     parameters: []
+  #     responses:
+  #       '204':
+  #         description: ''
+  #     tags:
+  #       - movie
+  #   parameters:
+  #     - name: id
+  #       in: path
+  #       description: A UUID string identifying this Movie.
+  #       required: true
+  #       type: string
+  #       format: uuid
+  /v1/users:
+    get:
+      x-google-backend:
+        address: https://back-XXXXXXXXX.run.app/api/v1/users
+        disable_auth: true
+      operationId: users_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/User'
+      tags:
+        - users
+    parameters: []
+  /v1/users/auth/login:
+    post:
+      x-google-backend:
+        address: https://back-XXXXXXXXX.run.app/api/v1/users/auth/login
+        disable_auth: true
+      operationId: users_auth_login_create
+      description: |-
+        Check the credentials and return the REST Token
+        if the credentials are valid and authenticated.
+        Calls Django Auth login method to register User ID
+        in Django session framework
+
+        Accept the following POST parameters: username, password
+        Return the REST Framework Token Object's key.
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Login'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/Login'
+      tags:
+        - users
+    # parameters: []
+    options:
+      description: "Cors associated request to login"
+      operationId: "login cors"
+      x-google-backend:
+        address: https://back-XXXXXXXXX.run.app/api/v1/users/auth/login
+        disable_auth: true
+      responses:
+        200:
+          description: "Allow"
+        401:
+          description: "Cors not allowed"
+  /v1/users/auth/logout:
+    get:
+      x-google-backend:
+        address: https://back-XXXXXXXXX.run.app/api/v1/users/auth/logout
+        disable_auth: true
+      operationId: users_auth_logout_list
+      summary: |-
+        Calls Django logout method and delete the Token object
+        assigned to the current User object.
+      description: Accepts/Returns nothing.
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - users
+    post:
+      x-google-backend:
+        address: https://back-XXXXXXXXX.run.app/api/v1/users/auth/logout
+        disable_auth: true
+      operationId: users_auth_logout_create
+      summary: |-
+        Calls Django logout method and delete the Token object
+        assigned to the current User object.
+      description: Accepts/Returns nothing.
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+        - users
+    parameters: []
+  /v1/users/auth/user:
+    get:
+      x-google-backend:
+        address: https://back-XXXXXXXXX.run.app/api/v1/users/auth/user
+        disable_auth: true
+      operationId: users_auth_user_read
+      summary: |-
+        Reads and updates UserModel fields
+        Accepts GET, PUT, PATCH methods.
+      description: |-
+        Default accepted fields: username, first_name, last_name
+        Default display fields: pk, username, email, first_name, last_name
+        Read-only fields: pk, email
+
+        Returns UserModel fields.
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/UserDetails'
+      tags:
+        - users
+    put:
+      x-google-backend:
+        address: https://back-XXXXXXXXX.run.app/api/v1/users/auth/user
+        disable_auth: true
+      operationId: users_auth_user_update
+      summary: |-
+        Reads and updates UserModel fields
+        Accepts GET, PUT, PATCH methods.
+      description: |-
+        Default accepted fields: username, first_name, last_name
+        Default display fields: pk, username, email, first_name, last_name
+        Read-only fields: pk, email
+
+        Returns UserModel fields.
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/UserDetails'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/UserDetails'
+      tags:
+        - users
+    patch:
+      x-google-backend:
+        address: https://back-XXXXXXXXX.run.app/api/v1/users/auth/user
+        disable_auth: true
+      operationId: users_auth_user_partial_update
+      summary: |-
+        Reads and updates UserModel fields
+        Accepts GET, PUT, PATCH methods.
+      description: |-
+        Default accepted fields: username, first_name, last_name
+        Default display fields: pk, username, email, first_name, last_name
+        Read-only fields: pk, email
+
+        Returns UserModel fields.
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/UserDetails'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/UserDetails'
+      tags:
+        - users
+    parameters: []
+definitions:
+  Movie:
+    required:
+      - title
+      - year
+    type: object
+    properties:
+      id:
+        title: Id
+        type: string
+        format: uuid
+        readOnly: true
+      created:
+        title: Created
+        type: string
+        format: date-time
+        readOnly: true
+      modified:
+        title: Modified
+        type: string
+        format: date-time
+        readOnly: true
+      title:
+        title: Title
+        type: string
+        maxLength: 255
+        minLength: 1
+      description:
+        title: Description
+        type: string
+        x-nullable: true
+      slug:
+        title: Slug
+        type: string
+        format: slug
+        pattern: ^[-a-zA-Z0-9_]+$
+        readOnly: true
+        minLength: 1
+      year:
+        title: Year
+        type: integer
+  User:
+    type: object
+    properties:
+      email:
+        title: Email address
+        type: string
+        format: email
+        maxLength: 254
+      last_login:
+        title: Last login
+        type: string
+        format: date-time
+        x-nullable: true
+      date_joined:
+        title: Date joined
+        type: string
+        format: date-time
+      is_staff:
+        title: Staff status
+        description: Designates whether the user can log into this admin site.
+        type: boolean
+  Login:
+    required:
+      - password
+    type: object
+    properties:
+      username:
+        title: Username
+        type: string
+      email:
+        title: Email
+        type: string
+        format: email
+      password:
+        title: Password
+        type: string
+        minLength: 1
+  UserDetails:
+    required:
+      - username
+    type: object
+    properties:
+      pk:
+        title: ID
+        type: integer
+        readOnly: true
+      username:
+        title: Username
+        description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+          only.
+        type: string
+        pattern: ^[\w.@+-]+$
+        maxLength: 150
+        minLength: 1
+      email:
+        title: Email address
+        type: string
+        format: email
+        readOnly: true
+        minLength: 1
+      first_name:
+        title: First name
+        type: string
+        maxLength: 150
+      last_name:
+        title: Last name
+        type: string
+        maxLength: 150
+  TokenObtainPair:
+    required:
+      - username
+      - password
+    type: object
+    properties:
+      username:
+        title: Username
+        type: string
+        minLength: 1
+      password:
+        title: Password
+        type: string
+        minLength: 1
+  TokenRefresh:
+    required:
+      - refresh
+    type: object
+    properties:
+      refresh:
+        title: Refresh
+        type: string
+        minLength: 1
+      access:
+        title: Access
+        type: string
+        readOnly: true
+        minLength: 1
+securityDefinitions:
+  api_key_header:
+    type: apiKey
+    name: x-api-key
+    in: header
+  api_key_query:
+    type: "apiKey"
+    name: "key"
+    in: "query"

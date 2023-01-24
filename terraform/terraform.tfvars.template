@@ -1,0 +1,5 @@
+# --- terraform.tfvars ---
+
+PROJECT_ID          = ""
+REGION              = ""
+ZONE                = ""

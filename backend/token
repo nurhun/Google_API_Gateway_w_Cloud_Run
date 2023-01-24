@@ -1,0 +1,401 @@
+ee7c137a04978ad4b9a073a6ce4cab1bdea4c531
+
+curl -X 'GET' \
+   -H "Authorization: Token ee7c137a04978ad4b9a073a6ce4cab1bdea4c531" \
+  'http://127.0.0.1:8000/api/v1/users/auth/user/'
+
+
+
+curl -X 'GET' \
+   -H "Authorization: Token ee7c137a04978ad4b9a073a6ce4cab1bdea4c531" \
+  'http://127.0.0.1:8000/api/v1/movie/'
+
+
+curl -XGET 'http://127.0.0.1:8000/api/v1/movie/'
+
+
+
+curl -X 'GET' \
+  'http://34.149.62.16.nip.io/api/v1/movie/' \
+   -H "Authorization: Token ee7c137a04978ad4b9a073a6ce4cab1bdea4c531"
+
+
+curl -v -H "host: 34.149.62.16.nip.io" \
+http://34.149.62.16/api/v1/movie --resolve store.example.com:443:34.149.62.16
+
+curl -v -H "host: 34.149.62.16.nip.io" http://34.149.62.16/api/v1/movie --resolve 34.149.62.16.nip.io:34.149.62.16
+
+
+curl -v -H "host: 34.149.62.16.nip.io" http://34.149.62.16.nip.io/api/v1/movie --resolve 34.149.62.16.nip.io:34.149.62.16
+
+
+curl -v http://34.149.62.16.nip.io/api/v1/movie 
+
+
+
+curl -X 'POST' \
+  'https://moviesapi-hfv7il6iea-uc.a.run.app/api/v1/movie/' \
+  -H "Authorization: Token 228fdb1b3033427374b632f45c1cd7b5244cd676" \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "title": "string",
+  "description": "string",
+  "year": 0
+}'
+
+To get the Token
+
+curl -X 'POST' \
+  'http://0.0.0.0:8000/api/v1/api-token-auth/' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+-d '{
+  "username": "admin",
+  "password": "admin"
+}'
+
+Respose will be like:
+{"token":"228fdb1b3033427374b632f45c1cd7b5244cd676"}
+
+
+apiKey ==== AIzaSyCM-ei8WOqHe62_FMIMbKbjom5s-ae0AbE
+
+curl -XPOST \
+  'https://getmovies-bxk45m4q.uc.gateway.dev/api/v1/movie?key=AIzaSyCM-ei8WOqHe62_FMIMbKbjom5s-ae0AbE' \
+  -H "Authorization: Token 228fdb1b3033427374b632f45c1cd7b5244cd676" \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+-d '{
+  "title": "string2",
+  "description": "string2",
+  "year": 2
+}'
+
+
+
+curl -XGET \
+"http://127.0.0.1:8000/api/v1/users/auth/user"
+
+
+curl -X 'POST' \
+  'https://getmovies-bxk45m4q.uc.gateway.dev/api/v1/movie/?key=AIzaSyCM-ei8WOqHe62_FMIMbKbjom5s-ae0AbE' \
+  -H "Authorization: Token 72ee514d1e2874e88e69796d9cde5779170d2c7b" \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "title": "string2",
+  "description": "string2",
+  "year": 2
+}'
+
+
+curl -X 'GET' \
+  'https://getmovies-bxk45m4q.uc.gateway.dev/api/v1/movie/' \
+   -H "Authorization: Token ee7c137a04978ad4b9a073a6ce4cab1bdea4c531"
+
+now the issue is, API Gateway ignore trailing slash
+
+    <h1>Page not found <span>(404)</span></h1>
+    
+    <table class="meta">
+      <tr>
+        <th>Request Method:</th>
+        <td>GET</td>
+      </tr>
+      <tr>
+        <th>Request URL:</th>
+        <td>https://moviesapi-hfv7il6iea-uc.a.run.app/api/v1/movie</td>
+
+
+curl -X 'POST' \
+  'https://moviesapi-hfv7il6iea-uc.a.run.app/api/v1/api-token-auth/?key=AIzaSyCM-ei8WOqHe62_FMIMbKbjom5s-ae0AbE' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+-d '{
+  "username": "admin",
+  "password": "admin"
+}'
+
+
+curl -X 'POST' \
+  'https://getmovies-bxk45m4q.uc.gateway.dev/api/v1/movie' \
+  -H "x-api-key: AIzaSyC8vjRdwnVO9I3Qo8VmY90SXUvcN_CJ9-0" \
+  -H "Authorization: Token 72ee514d1e2874e88e69796d9cde5779170d2c7b" \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "title": "string3",
+  "description": "string3",
+  "year": 3
+}'
+  -H "key: AIzaSyCM-ei8WOqHe62_FMIMbKbjom5s-ae0AbE" \
+
+curl -X 'POST' \
+  "https://getmovies-bxk45m4q.uc.gateway.dev/api/v1/movie?key=AIzaSyC8vjRdwnVO9I3Qo8VmY90SXUvcN_CJ9-0" \
+  -H "Authorization: Token 72ee514d1e2874e88e69796d9cde5779170d2c7b" \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "title": "string3",
+  "description": "string3",
+  "year": 3
+}'
+  "key": "AIzaSyCM-ei8WOqHe62_FMIMbKbjom5s-ae0AbE",
+
+curl -X 'POST' \
+  "https://moviesapi-hfv7il6iea-uc.a.run.app/api/v1/movie?key=AIzaSyC8vjRdwnVO9I3Qo8VmY90SXUvcN_CJ9-0" \
+  -H "Authorization: Token 72ee514d1e2874e88e69796d9cde5779170d2c7b" \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "title": "string2",
+  "description": "string2",
+  "year": 2
+}'
+
+curl https://getmovies-bxk45m4q.uc.gateway.dev/api/v1/movie 
+
+  -H "key: AIzaSyC8vjRdwnVO9I3Qo8VmY90SXUvcN_CJ9-0" \
+
+# working without security
+curl -X 'POST' \
+  "https://moviesapi-hfv7il6iea-uc.a.run.app/api/v1/movie" \
+  -H "Authorization: Token 72ee514d1e2874e88e69796d9cde5779170d2c7b" \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "title": "string2",
+  "description": "string2",
+  "year": 2
+}'
+
+curl -X 'POST' \
+  "https://getmovies-bxk45m4q.uc.gateway.dev/api/v1/api-token-auth?key=AIzaSyC8vjRdwnVO9I3Qo8VmY90SXUvcN_CJ9-0" \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+-d '{
+  "username": "admin",
+  "password": "admin"
+}'
+
+curl -X 'GET' \
+    -H "Authorization: Token 72ee514d1e2874e88e69796d9cde5779170d2c7b" \
+    -H "x-api-key: AIzaSyC8vjRdwnVO9I3Qo8VmY90SXUvcN_CJ9-0" \
+  "https://getmovies-bxk45m4q.uc.gateway.dev/api/v1/users/auth/user"
+
+
+    -H "Authorization: x-api-key AIzaSyC8vjRdwnVO9I3Qo8VmY90SXUvcN_CJ9-0" \
+
+curl -X 'GET' \
+    -H "Authorization: Token 72ee514d1e2874e88e69796d9cde5779170d2c7b" \
+  https://getmovies-bxk45m4q.uc.gateway.dev/api/v1/users/auth/user?key=AIzaSyC8vjRdwnVO9I3Qo8VmY90SXUvcN_CJ9-0
+
+
+
+curl -X 'GET' \
+  -H "Authorization: Token 72ee514d1e2874e88e69796d9cde5779170d2c7b" \
+  'https://moviesapi-hfv7il6iea-uc.a.run.app/api/v1/users/auth/user'
+
+
+
+
+
+# 
+  -H "x-api-key: AIzaSyC8vjRdwnVO9I3Qo8VmY90SXUvcN_CJ9-0" \
+curl -X 'POST' \
+  "https://moviesapi-hfv7il6iea-uc.a.run.app/api/v1/movie" \
+  -H "Authorization: Token 72ee514d1e2874e88e69796d9cde5779170d2c7b" \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "title": "string2",
+  "description": "string2",
+  "year": 2
+}'
+
+curl -X 'POST' \
+  "https://moviesapi-hfv7il6iea-uc.a.run.app/api/v1/movie" \
+  -H "Authorization: Basic YWRtaW46YWRtaW4=" \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "title": "string2",
+  "description": "string2",
+  "year": 2
+}'
+
+# Working with query security
+curl https://getmovies-bxk45m4q.uc.gateway.dev/api/v1/movie?key=AIzaSyC8vjRdwnVO9I3Qo8VmY90SXUvcN_CJ9-0
+
+
+curl https://getmovies-bxk45m4q.uc.gateway.dev/api/v1/movie \
+  -H "x-api-key: AIzaSyC8vjRdwnVO9I3Qo8VmY90SXUvcN_CJ9-0"
+
+
+curl -X 'POST' \
+  'https://getmovies-bxk45m4q.uc.gateway.dev/api/v1/movie' \
+  -H "x-api-key: AIzaSyC8vjRdwnVO9I3Qo8VmY90SXUvcN_CJ9-0" \
+  -H "Authorization: Basic YWRtaW46YWRtaW4=" \
+  -H "Access-Control-Allow-Origin:*" \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "title": "string4",
+  "description": "string4",
+  "year": 4
+}'
+
+
+curl -X 'POST' \
+  'https://getmovies-bxk45m4q.uc.gateway.dev/api/v1/api-token-auth/' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -H "x-api-key: AIzaSyC8vjRdwnVO9I3Qo8VmY90SXUvcN_CJ9-0" \
+-d '{
+  "username": "admin",
+  "password": "admin"
+}'
+
+Final Results so far, 
+- apiKey as a parameter works with GET but doesn't work with POST
+
+May be we need to try bearer :
+https://medium.com/swlh/manage-serverless-apis-with-api-gateway-in-gcp-b7f906efec1a
+
+
+#Working
+curl -X 'POST' \
+  'https://getmovies-bxk45m4q.uc.gateway.dev/api/v1/users/auth/login' \
+  -H "x-api-key: AIzaSyC8vjRdwnVO9I3Qo8VmY90SXUvcN_CJ9-0" \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "email": "admin@admin.com",
+  "password": "admin"
+}'
+
+curl -X 'POST' \
+  'https://moviesapi-hfv7il6iea-uc.a.run.app/api/v1/users/auth/login' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "email": "admin@admin.com",
+  "password": "admin"
+}'
+
+
+# Workung
+curl -X 'POST'   'https://getmovies-bxk45m4q.uc.gateway.dev/api/v1/movie' \
+  -H "x-api-key: AIzaSyC8vjRdwnVO9I3Qo8VmY90SXUvcN_CJ9-0" \
+  -H 'accept: application/json'  \
+  -H 'Content-Type: application/json'
+  -d '{
+  "title": "string5555555555",
+  "description": "string4",
+  "year": 4
+}'
+
+
+
+
+token c2484f1e3b018b261cbc2b1257d8e7a7b1fd76ec
+
+# Workung
+curl -X 'GET' \
+  'http://127.0.0.1:8000/api/v1/users/auth/user' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Token c2484f1e3b018b261cbc2b1257d8e7a7b1fd76ec'
+
+# Workung
+curl -X 'GET' \
+  'https://moviesapi-hfv7il6iea-uc.a.run.app/api/v1/users/auth/user' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Token c2484f1e3b018b261cbc2b1257d8e7a7b1fd76ec'
+
+# NOTTTTT Workung
+curl -X 'GET' \
+  'https://getmovies-bxk45m4q.uc.gateway.dev/api/v1/users/auth/user' \
+  -H 'accept: application/json' \
+  -H "x-api-key: AIzaSyC8vjRdwnVO9I3Qo8VmY90SXUvcN_CJ9-0" \
+  -H 'Authorization: Token c2484f1e3b018b261cbc2b1257d8e7a7b1fd76ec'
+
+
+curl -X 'POST' \
+  'http://127.0.0.1:8000/api/token' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "username": "admin",
+  "password": "admin"
+}'
+
+{
+  "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY3NDM3MDI2NywiaWF0IjoxNjc0MjgzODY3LCJqdGkiOiJkMGYxNTk2ZDZiZDI0OGI1YTA2MTk1ZDA3YmVjNmIyNyIsInVzZXJfaWQiOjF9.NXlnvgP-bAOVO641cKJRHrItc1c-kLUCWQ8bXfjf5CA",
+  "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc0Mjg0MTY3LCJpYXQiOjE2NzQyODM4NjcsImp0aSI6Ijc4MmU2NGY2Y2FmODRhNGE4MzBiZWQxZGM2MzcwMDYyIiwidXNlcl9pZCI6MX0.DfYc4xF0vpUrhKbFLNSWAXLH65iVIy6FQsOe8xxUMYQ"
+}
+
+-H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc0Mjg0MTY3LCJpYXQiOjE2NzQyODM4NjcsImp0aSI6Ijc4MmU2NGY2Y2FmODRhNGE4MzBiZWQxZGM2MzcwMDYyIiwidXNlcl9pZCI6MX0.DfYc4xF0vpUrhKbFLNSWAXLH65iVIy6FQsOe8xxUMYQ'
+
+curl -X 'POST' \
+  'https://moviesapi-hfv7il6iea-uc.a.run.app/api/token' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "username": "admin",
+  "password": "admin"
+}'
+{"refresh":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY3NDM4MzgxNCwiaWF0IjoxNjc0Mjk3NDE0LCJqdGkiOiJlYjgxNjNhNGFkNWQ0NTg5ODdhZTVjYWVkYmQzMWE5OSIsInVzZXJfaWQiOjF9.pao883AoYQQD4pOUTmJrdSd7mKjFg0_VSdU5aBnf7h8",
+"access":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc0Mjk4MDE0LCJpYXQiOjE2NzQyOTc0MTQsImp0aSI6IjZhOWVhMDYzNTJkZTRlZDc4NTEyYzJkMzg5ZjQ5ZGM1IiwidXNlcl9pZCI6MX0.y-V4G0w5DZcxJnRvJKJyenMdeLr4CgBYMZ_AmhIU07Y"}
+
+# Working
+curl -X 'GET' \
+  'https://moviesapi-hfv7il6iea-uc.a.run.app/api/v1/users/auth/user' \
+  -H 'accept: application/json' \
+  -H "x-api-key: AIzaSyC8vjRdwnVO9I3Qo8VmY90SXUvcN_CJ9-0" \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc0Mjk4MDE0LCJpYXQiOjE2NzQyOTc0MTQsImp0aSI6IjZhOWVhMDYzNTJkZTRlZDc4NTEyYzJkMzg5ZjQ5ZGM1IiwidXNlcl9pZCI6MX0.y-V4G0w5DZcxJnRvJKJyenMdeLr4CgBYMZ_AmhIU07Y"
+
+
+# Working through API Gateway after adding "disable_auth: true" to x-google-backend
+curl https://getmovies-bxk45m4q.uc.gateway.dev/api/v1/movie \
+  -H "x-api-key: AIzaSyC8vjRdwnVO9I3Qo8VmY90SXUvcN_CJ9-0" \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc0MzAxNjYxLCJpYXQiOjE2NzQzMDEwNjEsImp0aSI6IjQ3ODlmMDRiNzllMjRhOTRiMzFiYjZlZTIwMjViM2I0IiwidXNlcl9pZCI6MX0.pDKytaeeaFPu5RT9WTreJlfFHVsA2pIuOxdn_sERLuo"
+
+
+curl https://moviesapi-hfv7il6iea-uc.a.run.app/api/v1/movie \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc0Mjk5NTI1LCJpYXQiOjE2NzQyOTg5MjUsImp0aSI6ImU2NzJjNTU0NGIxMTRiZTVhYzI2NTVhMzMwN2Q4MjQzIiwidXNlcl9pZCI6MX0.4UQsWYqga_5hQvOqlTZNrAKsn-GXaXXuxNVHWLp0C5Y"
+
+
+
+curl -X 'POST' \
+  'http://127.0.0.1:8000/api/token' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: null' \
+  -d '{
+  "username": "admin",
+  "password": "admin"
+}'
+
+curl -X 'POST' \
+  'https://moviesapigw-bxk45m4q.uc.gateway.dev/api/token' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -H "x-api-key: AIzaSyC8vjRdwnVO9I3Qo8VmY90SXUvcN_CJ9-0" \
+  -d '{
+  "username": "admin",
+  "password": "admin"
+}'
+
+
+
+curl -X 'POST' \
+  'https://back-hfv7il6iea-uc.a.run.app/api/token' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "username": "admin",
+  "password": "admin"
+}'
+{"refresh":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY3NDU0NzAzOCwiaWF0IjoxNjc0NDYwNjM4LCJqdGkiOiJiMDQ3OTllNWExNmE0NjZlYjBmZDI1OWE2ODM0MmQ5NSIsInVzZXJfaWQiOjF9.pYAgEq-QQUSB_B3VQyGJAx_aDvV62oLG9SHXg9E0mc8",
+"access":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc0NDYxMjM4LCJpYXQiOjE2NzQ0NjA2MzgsImp0aSI6IjVmOGIwYzdjMjBiYjRkMzFhNzUzODBjNDEzYmI0ZDM4IiwidXNlcl9pZCI6MX0.hIE0sxOLgGdB6ifnnZlreXRCDQUuHl4ayy8flCfzmJM"}
